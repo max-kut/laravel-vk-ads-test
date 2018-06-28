@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \Superbalist\AjaxRedirector\AjaxRedirectServiceProvider::class,
 
         /*
          * Application Service Providers...

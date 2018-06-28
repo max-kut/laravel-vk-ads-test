@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'IndexController@entry')->name('login');
+
+Route::get('/vk-auth', 'VkAuthController@vkGetAuthCode');
+Route::get('/vk-redirect', 'VkAuthController@vkRedirect');
+
+Route::get('/logout', 'Auth\LoginController@appLogout');
+
+Route::middleware('auth')->group(function(){
+    Route::get('/accounts', 'AccountsController@list');
+    Route::get('/accounts/{accountId}', 'CampaignsController@list');
+    Route::get('/accounts/{accountId}/{campaignId}', 'AdsController@list');
+    Route::post('/save-ad/{id}', 'AdsController@save');
+    Route::post('/delete-ad/{id}', 'AdsController@delete');
 });
